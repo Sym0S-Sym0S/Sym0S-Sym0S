@@ -1,5 +1,5 @@
 <template>
-  <div>huhu</div>
+  <div class="text-3xl">huhu</div>
 </template>
 
 <script lang="ts" setup>
