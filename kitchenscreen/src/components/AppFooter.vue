@@ -1,6 +1,6 @@
 <template>
   <v-footer app height="40">
-    footer
+    Footer
   </v-footer>
 </template>
 
