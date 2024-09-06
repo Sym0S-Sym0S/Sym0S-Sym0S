@@ -8,21 +8,10 @@
       src="../assets/3pos.d90569de.svg"
     />
     <v-app-bar-title class="mx-2 text-xl">Küchenmonitor</v-app-bar-title>
-    <h1 class="mx-2 text-xl">{{ currentTime }}</h1>
+    <CurrentTime />
   </v-app-bar>
 </template>
 
 <script lang="ts">
-  export default {
-    data () {
-      return {
-        currentTime: '',
-      }
-    },
-    mounted () {
-      window.setInterval(() => {
-        this.currentTime = new Date().toLocaleDateString() + ' - ' + new Date().toLocaleTimeString() + ' Uhr'
-      }, 1000)
-    },
-  }
+
 </script>
