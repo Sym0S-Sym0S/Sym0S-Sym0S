@@ -9,12 +9,13 @@
     />
     <v-app-bar-title class="mx-2 text-xl">Küchenmonitor</v-app-bar-title>
     <CurrentTime />
-    <v-btn class="bg-green-500">Spawn</v-btn>
+    <v-btn class="bg-green-500" @click="$emit('spawn')">Spawn</v-btn>
   </v-app-bar>
 </template>
 
 <script lang="ts">
   export default {
     name: 'AppHeader',
+    emits: ['spawn'],
   }
 </script>

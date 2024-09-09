@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <AppHeader />
     <v-main class="bg-gray-300">
       <router-view />
     </v-main>
