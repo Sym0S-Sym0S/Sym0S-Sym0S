@@ -2,7 +2,6 @@
   <div class="max-w-72 max-h-fit m-2">
     <v-card
       class="bg-white text-black"
-      variant="outlined"
     >
       <v-card-item class="bg-blue-200">
         <v-card-title>{{ cardTitle }}</v-card-title>
