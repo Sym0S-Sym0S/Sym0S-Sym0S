@@ -18,6 +18,7 @@
 
 <script lang="ts">
   export default {
+    name: 'KitchenCard',
     data () {
       return {
         cardText: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. ' +
