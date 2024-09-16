@@ -11,7 +11,7 @@
       </v-card-text>
       <div class="flex flex-wrap m-2 justify-between">
         <!-- Button to toggle preparation status -->
-        <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereiten</v-btn>
+        <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereitet</v-btn>
         <!-- Button to remove card -->
         <v-btn class="bg-red-500 m-1" @click="removeCard">Servieren</v-btn>
       </div>
@@ -19,69 +19,48 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, onMounted, PropType, ref } from 'vue'
+<script lang="ts" setup>
+  import { onMounted, ref } from 'vue'
 
-  // Define the props type
+  // Define the props
   interface KitchenCardProps {
     cardIndex: number
   }
+  const props = defineProps<KitchenCardProps>()
 
-  export default defineComponent({
-    name: 'KitchenCard',
-    props: {
-      cardIndex: {
-        type: Number as PropType<number>,
-        required: true,
-      },
-    },
-    setup (props: KitchenCardProps) {
-      // Reactive properties
-      const cardText = ref(
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. ' +
-          'Error hic rerum et ut dolores sapiente possimus. Quasi, aliquam. ' +
-          'Quibusdam consequatur, distinctio dolorem fuga quidem laboriosam ' +
-          'deleniti fugit rerum atque dignissimos! Quod facere repudiandae ' +
-          'corrupti modi sint temporibus impedit placeat ipsa voluptatum ut ' +
-          'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi'
-      )
-      const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
-      const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
+  // Reactive properties
+  const cardText = ref(
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. ' +
+      'Error hic rerum et ut dolores sapiente possimus. Quasi, aliquam. ' +
+      'Quibusdam consequatur, distinctio dolorem fuga quidem laboriosam ' +
+      'deleniti fugit rerum atque dignissimos! Quod facere repudiandae ' +
+      'corrupti modi sint temporibus impedit placeat ipsa voluptatum ut ' +
+      'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi'
+  )
+  const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
+  const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
 
-      // Reactive state for preparation status, visibility, and blinking effect
-      const isPrepared = ref(false) // Initially not prepared
-      const isVisible = ref(true) // Card is initially visible
-      const isBlinking = ref(true) // Start with blinking border
+  // Reactive state for preparation status, visibility, and blinking effect
+  const isPrepared = ref(false) // Initially not prepared
+  const isVisible = ref(true) // Card is initially visible
+  const isBlinking = ref(true) // Start with blinking border
 
-      // Toggle preparation status (background color)
-      const togglePreparation = () => {
-        isPrepared.value = !isPrepared.value
-      }
+  // Toggle preparation status (background color)
+  const togglePreparation = () => {
+    isPrepared.value = !isPrepared.value
+  }
 
-      // Remove card (set visibility to false)
-      const removeCard = () => {
-        isVisible.value = false
-      }
+  // Remove card (set visibility to false)
+  const removeCard = () => {
+    isVisible.value = false
+  }
 
-      // Trigger blinking border effect when the card is spawned
-      onMounted(() => {
-        isBlinking.value = true // Start blinking
-        setTimeout(() => {
-          isBlinking.value = false // Stop blinking after 10 seconds
-        }, 10000)
-      })
-
-      return {
-        cardText,
-        cardTitle,
-        cardTime,
-        isPrepared,
-        isVisible,
-        isBlinking,
-        togglePreparation,
-        removeCard,
-      }
-    },
+  // Trigger blinking border effect when the card is spawned
+  onMounted(() => {
+    isBlinking.value = true // Start blinking
+    setTimeout(() => {
+      isBlinking.value = false // Stop blinking after 10 seconds
+    }, 10000)
   })
 </script>
 
