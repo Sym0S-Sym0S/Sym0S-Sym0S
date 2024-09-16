@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="flex flex-wrap">
     <AppHeader @spawn="addKitchenCard" />
-    <div>
+    <div
+      v-for="(card, index) in kitchenCards"
+      :key="index"
+    >
       <KitchenCard
-        v-for="(card, index) in kitchenCards"
-        :key="index"
         :card-index="index"
       />
     </div>
@@ -36,9 +37,3 @@
     },
   })
 </script>
-<style scoped>
-div > div {
-  display: flex;
-  flex-wrap: wrap;
-}
-</style>

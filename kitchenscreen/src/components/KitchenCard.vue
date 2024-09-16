@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" :class="['max-w-72 max-h-fit m-2', { 'blinking-border': isBlinking }]">
+  <div v-if="isVisible" :class="['max-w-72 max-h-fit m-2 p-[8px]', { 'blinking-border': isBlinking }]">
     <v-card class="bg-white text-black">
       <v-card-item class="bg-blue-200">
         <v-card-title>{{ cardTitle }}</v-card-title>
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, onMounted, PropType, ref, watch } from 'vue'
+  import { defineComponent, onMounted, PropType, ref } from 'vue'
 
   // Define the props type
   interface KitchenCardProps {
@@ -45,21 +45,13 @@
           'corrupti modi sint temporibus impedit placeat ipsa voluptatum ut ' +
           'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi '
       )
-      const cardTitle = ref(`Card #${props.cardIndex + 1}`)
+      const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
       const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
 
       // Reactive state for preparation status, visibility, and blinking effect
       const isPrepared = ref(false) // Initially not prepared
       const isVisible = ref(true) // Card is initially visible
       const isBlinking = ref(true) // Start with blinking border
-
-      // Watch for changes in cardIndex prop and update cardTitle
-      watch(
-        () => props.cardIndex,
-        (newIndex: number) => {
-          cardTitle.value = `Card No. ${newIndex + 1}`
-        }
-      )
 
       // Toggle preparation status (background color)
       const togglePreparation = () => {
@@ -75,7 +67,7 @@
       onMounted(() => {
         isBlinking.value = true // Start blinking
         setTimeout(() => {
-          isBlinking.value = false // Stop blinking after 3 seconds
+          isBlinking.value = false // Stop blinking after 10 seconds
         }, 10000)
       })
 
@@ -108,6 +100,7 @@
 
 .blinking-border {
   animation: blink-border 1s infinite;
-  border: 10px solid;
+  border: 8px solid;
+  padding: 0px;
 }
 </style>
