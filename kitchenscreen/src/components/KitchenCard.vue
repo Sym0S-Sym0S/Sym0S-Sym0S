@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" :class="['max-w-72 max-h-fit m-2 p-[8px]', { 'blinking-border': isBlinking }]">
+  <div v-if="isVisible" :class="['max-w-72 max-h-fit m-[1px] p-[8px]', { 'blinking-border': isBlinking }]">
     <v-card class="bg-white text-black">
       <v-card-item class="bg-blue-200">
         <v-card-title>{{ cardTitle }}</v-card-title>
@@ -9,12 +9,12 @@
       <v-card-text :class="{ 'bg-green-200': isPrepared, 'bg-white': !isPrepared }">
         {{ cardText }}
       </v-card-text>
-      <v-card-actions>
+      <div class="flex flex-wrap m-2 justify-between">
         <!-- Button to toggle preparation status -->
-        <v-btn class="bg-green-500" @click="togglePreparation">Alles Zubereitet</v-btn>
+        <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereiten</v-btn>
         <!-- Button to remove card -->
-        <v-btn class="bg-red-500" @click="removeCard">Servieren</v-btn>
-      </v-card-actions>
+        <v-btn class="bg-red-500 m-1" @click="removeCard">Servieren</v-btn>
+      </div>
     </v-card>
   </div>
 </template>
@@ -43,7 +43,7 @@
           'Quibusdam consequatur, distinctio dolorem fuga quidem laboriosam ' +
           'deleniti fugit rerum atque dignissimos! Quod facere repudiandae ' +
           'corrupti modi sint temporibus impedit placeat ipsa voluptatum ut ' +
-          'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi '
+          'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi'
       )
       const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
       const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
