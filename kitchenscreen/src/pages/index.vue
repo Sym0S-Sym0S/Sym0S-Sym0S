@@ -1,6 +1,6 @@
 <template>
+  <AppHeader @spawn="addKitchenCard" />
   <div class="flex flex-wrap">
-    <AppHeader @spawn="addKitchenCard" />
     <div
       v-for="(_, index) in kitchenCards"
       :key="index"
