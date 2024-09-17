@@ -13,7 +13,7 @@
         <!-- Button to toggle preparation status -->
         <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereitet</v-btn>
         <!-- Button to remove card -->
-        <v-btn class="bg-red-500 m-1" @click="removeCard">Servieren</v-btn>
+        <v-btn class="bg-red-500 m-1" @click="emit('removeCard', cardIndex)">Servieren</v-btn>
       </div>
     </v-card>
   </div>
@@ -21,6 +21,8 @@
 
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue'
+
+  const emit = defineEmits(['removeCard'])
 
   // Define the props
   interface KitchenCardProps {
@@ -48,11 +50,6 @@
   // Toggle preparation status (background color)
   const togglePreparation = () => {
     isPrepared.value = !isPrepared.value
-  }
-
-  // Remove card (set visibility to false)
-  const removeCard = () => {
-    isVisible.value = false
   }
 
   // Trigger blinking border effect when the card is spawned
