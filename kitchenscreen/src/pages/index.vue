@@ -19,25 +19,21 @@
   // Sample product array
   const productList = ['Pommes', 'Cola', 'Burger', 'Pizza', 'Salad', 'Pasta', 'Ice Cream', 'Coffee', 'Tea', 'Juice']
 
-  // Function to get a random number of products
+  // Function to get a random number of products with counts
   const getRandomProducts = () => {
     const numberOfProducts = Math.floor(Math.random() * 10) + 1
-    const selectedProducts = []
-    const usedIndices = new Set()
+    const productCounts: Record<string, number> = {}
 
-    while (selectedProducts.length < numberOfProducts) {
-      const index = Math.floor(Math.random() * productList.length)
-      if (!usedIndices.has(index)) {
-        usedIndices.add(index)
-        selectedProducts.push(productList[index])
-      }
+    while (Object.keys(productCounts).length < numberOfProducts) {
+      const product = productList[Math.floor(Math.random() * productList.length)]
+      productCounts[product] = (productCounts[product] || 0) + 1
     }
 
-    return selectedProducts
+    return productCounts
   }
 
   // Reactive array to store kitchen cards
-  const kitchenCards = ref<Array<{ id: number, products: string[] }>>([])
+  const kitchenCards = ref<Array<{ id: number, products: Record<string, number> }>>([])
 
   // Function to add a new kitchen card with random products
   const addKitchenCard = () => {
