@@ -6,9 +6,12 @@
         <p class="text-black">{{ cardTime }}</p>
       </v-card-item>
       <!-- Apply dynamic class binding to toggle background color -->
-      <v-card-text :class="{ 'bg-green-200': isPrepared, 'bg-white': !isPrepared }">
+      <div
+        class="m-3 text-sm border"
+        :class="{ 'bg-green-200': isPrepared, 'bg-white': !isPrepared }"
+      >
         {{ cardText }}
-      </v-card-text>
+      </div>
       <div class="flex flex-wrap m-2 justify-between">
         <!-- Button to toggle preparation status -->
         <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereitet</v-btn>
@@ -31,14 +34,7 @@
   const props = defineProps<KitchenCardProps>()
 
   // Reactive properties
-  const cardText = ref(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. ' +
-      'Error hic rerum et ut dolores sapiente possimus. Quasi, aliquam. ' +
-      'Quibusdam consequatur, distinctio dolorem fuga quidem laboriosam ' +
-      'deleniti fugit rerum atque dignissimos! Quod facere repudiandae ' +
-      'corrupti modi sint temporibus impedit placeat ipsa voluptatum ut ' +
-      'sapiente quisquam, sit quibusdam enim explicabo tempora eligendi'
-  )
+  const cardText = ref('Lorem ipsum')
   const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
   const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
 
