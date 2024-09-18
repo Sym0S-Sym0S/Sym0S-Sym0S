@@ -8,7 +8,7 @@
       <div
         v-for="(count, product) in products"
         :key="product"
-        class="mx-3 text-sm border"
+        class="mx-3 py-1 text-sm border"
         :class="{ 'bg-green-200': productStatus[product], 'bg-white': !productStatus[product] }"
         @click="toggleProduct(product)"
       >
