@@ -1,12 +1,10 @@
 <template>
   <AppHeader @spawn="addKitchenCard" />
   <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
-    <div
-      v-for="(card, index) in kitchenCards"
-      :key="card.id"
-    >
+    <div v-for="(card, index) in kitchenCards" :key="card.id">
       <KitchenCard
         :card-index="index"
+        :products="card.products"
         @remove-card="remove"
       />
     </div>
@@ -18,13 +16,32 @@
   import AppHeader from '@/components/AppHeader.vue'
   import KitchenCard from '@/components/KitchenCard.vue'
 
-  // Reactive array to store kitchen cards
-  const kitchenCards = ref<Array<{ id: number }>>([])
+  // Sample product array
+  const productList = ['Pommes', 'Cola', 'Burger', 'Pizza', 'Salad', 'Pasta', 'Ice Cream', 'Coffee', 'Tea', 'Juice']
 
-  // Function to add a new kitchen card
+  // Function to get a random number of products
+  const getRandomProducts = () => {
+    const numberOfProducts = Math.floor(Math.random() * 10) + 1
+    const selectedProducts = []
+    const usedIndices = new Set()
+
+    while (selectedProducts.length < numberOfProducts) {
+      const index = Math.floor(Math.random() * productList.length)
+      if (!usedIndices.has(index)) {
+        usedIndices.add(index)
+        selectedProducts.push(productList[index])
+      }
+    }
+
+    return selectedProducts
+  }
+
+  // Reactive array to store kitchen cards
+  const kitchenCards = ref<Array<{ id: number, products: string[] }>>([])
+
+  // Function to add a new kitchen card with random products
   const addKitchenCard = () => {
-    // Generate a unique ID for each card
-    const newCard = { id: Date.now() }
+    const newCard = { id: Date.now(), products: getRandomProducts() }
     kitchenCards.value.push(newCard)
   }
 

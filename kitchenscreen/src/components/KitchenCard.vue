@@ -5,17 +5,17 @@
         <v-card-title>{{ cardTitle }}</v-card-title>
         <p class="text-black">{{ cardTime }}</p>
       </v-card-item>
-      <!-- Apply dynamic class binding to toggle background color -->
       <div
-        class="m-3 text-sm border"
-        :class="{ 'bg-green-200': isPrepared, 'bg-white': !isPrepared }"
+        v-for="(product, index) in products"
+        :key="index"
+        class="mx-3 text-sm border"
+        :class="{ 'bg-green-200': productStatus[index], 'bg-white': !productStatus[index] }"
+        @click="toggleProduct(index)"
       >
-        {{ cardText }}
+        {{ product }}
       </div>
       <div class="flex flex-wrap m-2 justify-between">
-        <!-- Button to toggle preparation status -->
         <v-btn class="bg-green-500 m-1" @click="togglePreparation">Zubereitet</v-btn>
-        <!-- Button to remove card -->
         <v-btn class="bg-red-500 m-1" @click="emit('removeCard', cardIndex)">Servieren</v-btn>
       </div>
     </v-card>
@@ -30,22 +30,28 @@
   // Define the props
   interface KitchenCardProps {
     cardIndex: number
+    products: string[]
   }
   const props = defineProps<KitchenCardProps>()
 
   // Reactive properties
-  const cardText = ref('Lorem ipsum')
   const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
   const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
 
-  // Reactive state for preparation status, visibility, and blinking effect
-  const isPrepared = ref(false) // Initially not prepared
+  // Reactive state for preparation status, visibility, blinking effect, and product status
   const isVisible = ref(true) // Card is initially visible
   const isBlinking = ref(true) // Start with blinking border
+  const productStatus = ref<boolean[]>(new Array(props.products.length).fill(false))
 
   // Toggle preparation status (background color)
   const togglePreparation = () => {
-    isPrepared.value = !isPrepared.value
+    const allGreen = productStatus.value.every(status => status)
+    productStatus.value = productStatus.value.map(() => !allGreen)
+  }
+
+  // Toggle product background color
+  const toggleProduct = (index: number) => {
+    productStatus.value[index] = !productStatus.value[index]
   }
 
   // Trigger blinking border effect when the card is spawned
