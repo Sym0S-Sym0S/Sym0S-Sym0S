@@ -1,6 +1,6 @@
 <template>
   <AppHeader @spawn="addKitchenCard" />
-  <TransitionGroup class="flex flex-wrap" name="cardtrans" tag="div">
+  <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
     <div
       v-for="(card, index) in kitchenCards"
       :key="card.id"
@@ -10,7 +10,7 @@
         @remove-card="remove"
       />
     </div>
-  </TransitionGroup>
+  </transition-group>
 </template>
 
 <script lang="ts" setup>
