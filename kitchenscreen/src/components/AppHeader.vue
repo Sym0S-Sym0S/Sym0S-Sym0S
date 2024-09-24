@@ -10,12 +10,17 @@
       />
       <v-app-bar-title class="mx-2 text-xl">Küchenmonitor</v-app-bar-title>
       <CurrentTime />
-      <v-btn class="bg-green-500" @click="emit('spawn')">Spawn</v-btn>
+      <v-btn class="bg-green-500" @click="spawn">Spawn</v-btn>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-  // Define the 'spawn' event
-  const emit = defineEmits(['spawn'])
+  import { useKitchenStore } from '@/stores/kitchen'
+
+  const kitchenStore = useKitchenStore()
+
+  const spawn = () => {
+    kitchenStore.addKitchenCard()
+  }
 </script>
