@@ -5,7 +5,7 @@
       { 'transform translate-x-0': isDrawerOpen, 'transform translate-x-full': !isDrawerOpen }
     ]"
   >
-    <button class="bg-blue-500 text-white p-2" @click="toggleDrawer">Schließen</button>
+    <v-btn class="bg-blue-500 text-white" @click="toggleDrawer">Schließen</v-btn>
     <ul>
       <li
         v-for="(count, product) in aggregatedProducts"
@@ -39,7 +39,9 @@
       }
     })
 
-    return productsCount
+    return Object.fromEntries(
+      Object.entries(productsCount).sort(([productA], [productB]) => productA.localeCompare(productB))
+    )
   })
 
   const toggleDrawer = () => {
