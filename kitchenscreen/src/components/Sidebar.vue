@@ -27,5 +27,5 @@
 </script>
 
 <style scoped>
-/* Hier kannst du zusätzliche Stile hinzufügen */
+
 </style>
