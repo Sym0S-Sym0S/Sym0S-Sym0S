@@ -1,16 +1,14 @@
 <template>
-  <div class="flex">
-    <Sidebar />
-    <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
-      <div v-for="(card, index) in kitchenCards" :key="card.id">
-        <KitchenCard
-          :card-index="index"
-          :products="card.products"
-          @remove-card="remove"
-        />
-      </div>
-    </transition-group>
-  </div>
+  <Sidebar />
+  <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
+    <div v-for="(card, index) in kitchenCards" :key="card.id">
+      <KitchenCard
+        :card-index="index"
+        :products="card.products"
+        @remove-card="remove"
+      />
+    </div>
+  </transition-group>
 </template>
 
 <script lang="ts" setup>
