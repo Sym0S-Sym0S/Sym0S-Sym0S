@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
     <Sidebar class="z-20" />
-    <div class="flex-grow p-4 ml-4">
+    <div class="flex-grow p-4">
       <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
         <div v-for="(card, index) in kitchenCards" :key="card.id">
           <KitchenCard
