@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white sticky top-0 p-2 z-10 shadow h-16">
+  <header class="bg-white sticky top-0 p-2 shadow h-16">
     <div class="flex items-center h-full">
       <v-img
         class="mx-2"

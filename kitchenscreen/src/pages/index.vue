@@ -1,15 +1,17 @@
 <template>
   <div class="flex">
-    <Sidebar class="z-20" />
-    <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
-      <div v-for="(card, index) in kitchenCards" :key="card.id">
-        <KitchenCard
-          :card-index="index"
-          :products="card.products"
-          @remove-card="remove"
-        />
-      </div>
-    </transition-group>
+    <Sidebar />
+    <div :class="['transition-all duration-300', { 'mr-72': isDrawerOpen, 'mr-0': !isDrawerOpen }]">
+      <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
+        <div v-for="(card, index) in kitchenCards" :key="card.id">
+          <KitchenCard
+            :card-index="index"
+            :products="card.products"
+            @remove-card="remove"
+          />
+        </div>
+      </transition-group>
+    </div>
   </div>
 </template>
 
@@ -20,6 +22,7 @@
 
   const kitchenStore = useKitchenStore()
   const kitchenCards = kitchenStore.kitchenCards
+  const isDrawerOpen = kitchenStore.isDrawerOpen
 
   // Function to remove a card
   const remove = (index: number) => {
