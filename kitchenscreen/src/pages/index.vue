@@ -20,7 +20,6 @@
 
   const kitchenStore = useKitchenStore()
   const kitchenCards = kitchenStore.kitchenCards
-  const isDrawerOpen = kitchenStore.isDrawerOpen
 
   // Function to remove a card
   const remove = (index: number) => {
