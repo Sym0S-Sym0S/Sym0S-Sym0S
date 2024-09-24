@@ -10,7 +10,7 @@
       />
       <v-app-bar-title class="mx-2 text-xl">Küchenmonitor</v-app-bar-title>
       <CurrentTime />
-      <v-btn class="bg-green-500" @click="spawn">Spawn</v-btn>
+      <v-btn class="bg-green-500 mr-1" @click="spawn">Spawn</v-btn>
       <v-btn class="bg-blue-500 text-white" @click="toggleDrawer">Toggle Sidebar</v-btn>
     </div>
   </header>
