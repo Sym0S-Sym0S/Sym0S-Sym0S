@@ -1,18 +1,23 @@
 <template>
-  <Sidebar />
-  <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
-    <div v-for="(card, index) in kitchenCards" :key="card.id">
-      <KitchenCard
-        :card-index="index"
-        :products="card.products"
-        @remove-card="remove"
-      />
+  <div class="flex">
+    <Sidebar class="z-20" />
+    <div class="flex-grow p-4 ml-4">
+      <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
+        <div v-for="(card, index) in kitchenCards" :key="card.id">
+          <KitchenCard
+            :card-index="index"
+            :products="card.products"
+            @remove-card="remove"
+          />
+        </div>
+      </transition-group>
     </div>
-  </transition-group>
+  </div>
 </template>
 
 <script lang="ts" setup>
   import KitchenCard from '@/components/KitchenCard.vue'
+  import Sidebar from '@/components/Sidebar.vue'
   import { useKitchenStore } from '@/stores/kitchen'
 
   const kitchenStore = useKitchenStore()
@@ -24,7 +29,7 @@
   }
 </script>
 
-<style>
+<style scoped>
 .cardtrans-move,
 .cardtrans-enter-active,
 .cardtrans-leave-active {

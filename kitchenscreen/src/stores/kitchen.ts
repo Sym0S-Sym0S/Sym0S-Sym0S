@@ -6,9 +6,10 @@ export const useKitchenStore = defineStore('kitchen', () => {
   const productList = ['Pommes', 'Cola', 'Burger', 'Pizza', 'Salad', 'Pasta', 'Ice Cream', 'Coffee', 'Tea', 'Juice']
 
   // Reactive array to store kitchen cards
-  const kitchenCards = ref<Array<{ id: number, products: Record<string, number> }>>([])
+  const kitchenCards = ref<Array<{ id: number; products: Record<string, number> }>>([])
 
-  // Function to get a random number of products with counts
+  const isDrawerOpen = ref(false)
+
   const getRandomProducts = () => {
     const numberOfProducts = Math.floor(Math.random() * 10) + 1
     const productCounts: Record<string, number> = {}
@@ -26,8 +27,15 @@ export const useKitchenStore = defineStore('kitchen', () => {
     kitchenCards.value.push(newCard)
   }
 
+  // Toggle function for the Sidebar
+  const drawerToggle = () => {
+    isDrawerOpen.value = !isDrawerOpen.value
+  }
+
   return {
     kitchenCards,
     addKitchenCard,
+    isDrawerOpen,
+    drawerToggle,
   }
 })
