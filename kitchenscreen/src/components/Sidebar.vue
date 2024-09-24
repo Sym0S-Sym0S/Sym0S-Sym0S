@@ -7,9 +7,9 @@
   >
     <v-btn class="bg-blue-500 text-white" @click="toggleDrawer">Schließen</v-btn>
     <ul>
-      <li class="p-4">Link 1</li>
-      <li class="p-4">Link 2</li>
-      <li class="p-4">Link 3</li>
+      <li class="p-1">Link 1</li>
+      <li class="p-1">Link 2</li>
+      <li class="p-1">Link 3</li>
     </ul>
   </div>
 </template>
