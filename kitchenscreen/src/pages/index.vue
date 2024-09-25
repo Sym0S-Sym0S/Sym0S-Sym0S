@@ -1,5 +1,4 @@
 <template>
-  <Sidebar />
   <transition-group class="flex flex-wrap" name="cardtrans" tag="div">
     <div v-for="(card, index) in kitchenCards" :key="card.id">
       <KitchenCard
@@ -13,7 +12,6 @@
 
 <script lang="ts" setup>
   import KitchenCard from '@/components/KitchenCard.vue'
-  import Sidebar from '@/components/Sidebar.vue'
   import { useKitchenStore } from '@/stores/kitchen'
 
   const kitchenStore = useKitchenStore()
