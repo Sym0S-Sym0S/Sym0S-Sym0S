@@ -11,7 +11,7 @@ export const useKitchenStore = defineStore('kitchen', () => {
   const isDrawerOpen = ref(false)
 
   const getRandomProducts = () => {
-    const numberOfProducts = Math.floor(Math.random() * 10) + 1
+    const numberOfProducts = Math.floor(Math.random() * 5) + 1
     const productCounts: Record<string, number> = {}
 
     while (Object.keys(productCounts).length < numberOfProducts) {
