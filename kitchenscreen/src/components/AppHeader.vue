@@ -11,6 +11,7 @@
       <v-app-bar-title class="mx-2 text-xl">Küchenmonitor</v-app-bar-title>
       <CurrentTime />
       <v-btn class="bg-green-500 mr-1" @click="spawn">Spawn</v-btn>
+      <v-btn class="bg-red-500 mr-1" @click="kill">Kill</v-btn>
       <v-btn class="bg-blue-500 text-white" @click="toggleDrawer">Toggle Sidebar</v-btn>
     </div>
   </header>
@@ -27,5 +28,9 @@
 
   const spawn = () => {
     kitchenStore.addKitchenCard()
+  }
+
+  const kill = () => {
+    kitchenStore.removeAll()
   }
 </script>

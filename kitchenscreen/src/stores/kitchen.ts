@@ -27,6 +27,10 @@ export const useKitchenStore = defineStore('kitchen', () => {
     kitchenCards.value.push(newCard)
   }
 
+  const removeAll = () => {
+    kitchenCards.value.splice(0, kitchenCards.value.length)
+  }
+
   // Toggle function for the Sidebar
   const drawerToggle = () => {
     isDrawerOpen.value = !isDrawerOpen.value
@@ -35,6 +39,7 @@ export const useKitchenStore = defineStore('kitchen', () => {
   return {
     kitchenCards,
     addKitchenCard,
+    removeAll,
     isDrawerOpen,
     drawerToggle,
   }
