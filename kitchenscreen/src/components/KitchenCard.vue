@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isVisible" :class="['max-w-72 max-h-fit m-[1px] p-[8px]', { 'blinking-border': isBlinking }]">
+  <div :class="['max-w-72 max-h-fit m-[1px] p-[8px]', { 'blinking-border': isBlinking }]">
     <v-card class="bg-white text-black">
       <v-card-item class="bg-blue-200">
         <v-card-title>{{ cardTitle }}</v-card-title>
@@ -38,8 +38,7 @@
   const cardTitle = ref(`Card No. ${props.cardIndex + 1}`)
   const cardTime = ref(new Date().toLocaleTimeString().slice(0, 5))
 
-  // Reactive state for preparation status, visibility, blinking effect, and product status
-  const isVisible = ref(true) // Card is initially visible
+  // Reactive state for preparation status, blinking effect, and product status
   const isBlinking = ref(true) // Start with blinking border
   const productStatus = ref<Record<string, boolean>>(Object.keys(props.products).reduce((acc, product) => {
     acc[product] = false
