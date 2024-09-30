@@ -3,6 +3,7 @@
     <div v-for="(card, index) in kitchenCards" :key="card.id">
       <KitchenCard
         :card-index="index"
+        class="w-96"
         :products="card.products"
         @remove-card="remove"
       />
