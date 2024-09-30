@@ -27,6 +27,10 @@ export const useKitchenStore = defineStore('kitchen', () => {
     kitchenCards.value.push(newCard)
   }
 
+  const remove = (index: number) => {
+    kitchenCards.value.splice(index, 1)
+  }
+
   const removeAll = () => {
     kitchenCards.value.splice(0, kitchenCards.value.length)
   }
@@ -39,6 +43,7 @@ export const useKitchenStore = defineStore('kitchen', () => {
   return {
     kitchenCards,
     addKitchenCard,
+    remove,
     removeAll,
     isDrawerOpen,
     drawerToggle,

@@ -16,11 +16,7 @@
 
   const kitchenStore = useKitchenStore()
   const kitchenCards = kitchenStore.kitchenCards
-
-  // Function to remove a card
-  const remove = (index: number) => {
-    kitchenCards.splice(index, 1)
-  }
+  const remove = kitchenStore.remove
 </script>
 
 <style scoped>
